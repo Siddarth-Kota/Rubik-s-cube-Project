@@ -57,6 +57,11 @@ class Main {
         C.CubeTurnUp();
       else if(move.equals("RANDOMIZE"))
         C.randomize();
+      else if(move.equals("SOLVE"))
+        C.solve();
+      else if(move.equals("PRINT")) {
+        System.out.println(Solve.getMoveLog());
+      }
       else if(move.equals("END")) {
         System.out.println("Ending the Program!");
         in.close();

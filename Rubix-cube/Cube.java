@@ -19,11 +19,12 @@ public class Cube{
     cube = tempcube;
   }
 
-  public int [][] getcubeArray() {
+  public int [][] getCubeArray() {
     return cube;
   }
 
-  public void Movetester() {
+  public void solve() {
+    cube = WhiteCross.solveWhiteCross(cube);
   }
 
   public void randomize() { 
