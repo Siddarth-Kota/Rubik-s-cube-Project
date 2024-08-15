@@ -149,4 +149,18 @@ public class Move{
     arr = changeViewRight(arr);
     return arr;
   }
+
+  public static int[][] CubeRotateRight(int[][] arr) {
+    arr = FaceTurnRight(arr, 1);
+    arr = FaceTurnRight(arr, 2);
+    arr = FaceTurnRight(arr, 3);
+    return arr;
+  }
+  
+  public static int[][] CubeRotateLeft(int[][] arr) {
+    arr = FaceTurnLeft(arr, 1);
+    arr = FaceTurnLeft(arr, 2);
+    arr = FaceTurnLeft(arr, 3);
+    return arr;
+  }
 }

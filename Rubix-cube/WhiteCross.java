@@ -10,51 +10,95 @@ public class WhiteCross{
 
     public int[][] solveWhiteCross(int[][] cube) {
         this.cube = cube;
-        OrientFaces();
+        OrientWhiteFace();
+        positionWhiteEdges();
+        createWhiteCross();
         return cube;
     }
 
-/*
- *                 |   (0,0)(0,1)(0,2)  |
- *                 |   (1,0)(1,1)(1,2)  |
- *                 |   (2,0)(2,1)(2,2)  |
- * ---------------------------------------------------------
- * (3,0)(3,1)(3,2) |   (6,0)(6,1)(6,2)  |  (9,0)(9,1)(9,2)
- * (4,0)(4,1)(4,2) |   (7,0)(7,1)(7,2)  | (10,0)(10,1)(10,2)
- * (5,0)(5,1)(5,2) |   (8,0)(8,1)(8,2)  | (11,0)(11,1)(11,2)
- * ---------------------------------------------------------
- *                 | (12,0)(12,1)(12,2) |
- *                 | (13,0)(13,1)(13,2) |
- *                 | (14,0)(14,1)(14,2) |
- *                 ----------------------
- *                 | (15,0)(15,1)(15,2) |
- *                 | (16,0)(16,1)(16,2) |
- *                 | (17,0)(17,1)(17,2) |
- * 
- * 1 = white, 2 = yellow, 3 = orange
- * 4 = green, 5 = blue, 6 = red
- */
-
-    //Orients the cube such that the white face is on the top
-    public void OrientFaces() {
-        
-        if(cube[1][1] == 1) {
-            cube = helper.CubeTurnDown(cube);
+ public void createWhiteCross() {
+    while(!isWhiteCross()) {
+        if(cube[7][1] == cube[6][1] && cube[2][1] == 1) {
+            cube = helper.CubeTurnLeft(cube);
         }
-        else if(cube[4][1] == 1) {
+        else {
+            while(cube[7][1] != cube[8][1]) {
+                cube = helper.D(cube);
+            }
+            cube = helper.F(cube);
+            cube = helper.F(cube);
+            cube = helper.CubeTurnLeft(cube);
+        }
+    }
+}
+
+    public void positionWhiteEdges() {
+        while(!isDaisy()) {
+            //top side
+            if(helper.getEdgeColor(cube, 1,"bottom") == 1) {
+                while(cube[12][1] == 1) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.F(cube);
+                cube = helper.F(cube);
+            }
+            //left
+            if(helper.getEdgeColor(cube, 4,"right") == 1) {
+                while(cube[12][1] == 1) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.FPrime(cube);
+            }
+            //Front face top
+            if(helper.getEdgeColor(cube, 7,"top") == 1) {
+                while(cube[12][1] == 1) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.F(cube);
+            }
+            //Front face bottom
+            if(helper.getEdgeColor(cube, 7,"bottom") == 1) {
+                while(cube[12][1] == 1) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.F(cube);
+            }
+            //right
+            if(helper.getEdgeColor(cube, 10,"left") == 1) {
+                while(cube[12][1] == 1) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.F(cube);
+            }
             cube = helper.CubeTurnRight(cube);
         }
+    }
+    //Orients the cube such that the white face is on the top
+    public void OrientWhiteFace() {        
+        if(cube[4][1] == 1) {
+            cube = helper.CubeRotateRight(cube);
+        }
         else if(cube[7][1] == 1) {
+            cube = helper.CubeTurnUp(cube);
         }
         else if(cube[10][1] == 1) {
-            cube = helper.CubeTurnLeft(cube);
+            cube = helper.CubeRotateLeft(cube);
         }
         else if(cube[13][1] == 1) {
             cube = helper.CubeTurnUp(cube);
+            cube = helper.CubeTurnUp(cube);
         }
         else if(cube[16][1] == 1) {
-            cube = helper.CubeTurnUp(cube);
-            cube = helper.CubeTurnUp(cube);
+            cube = helper.CubeTurnDown(cube);
         }
+    }
+
+    public boolean isWhiteCross() {
+        OrientWhiteFace();
+        return cube[0][1] == 1 && cube[1][1] == 1 && cube[2][1] == 1 && cube[1][0] == 1 && cube[1][2] == 1 && cube[3][1] == cube[4][1] && cube[6][1] == cube[7][1] && cube[9][1] == cube[10][1] && cube[17][1] == cube[16][1];
+    }
+
+    public boolean isDaisy() {
+        return cube[12][1] == 1 && cube[13][0] == 1 && cube[14][1] == 1 && cube[13][2] == 1 && cube[13][1] == 2;
     }
 }

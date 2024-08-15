@@ -198,4 +198,6 @@ public class Cube{
   public void CubeTurnRight() {Move.changeViewRight(cube);}
   public void CubeTurnUp() {Move.changeViewUp(cube);}
   public void CubeTurnDown() {Move.changeViewDown(cube);}
+  public void CubeRotateRight() {Move.CubeRotateRight(cube);}
+  public void CubeRotateLeft() {Move.CubeRotateLeft(cube);}
 }

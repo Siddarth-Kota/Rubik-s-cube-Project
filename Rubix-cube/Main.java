@@ -22,11 +22,11 @@ class Main {
         C.M();
       else if(move.equals("R"))
         C.R();
-      else if(move.equals("RPRIME"))
+      else if(move.equals("R'"))
         C.RPrime();
-      else if(move.equals("MPRIME"))
+      else if(move.equals("M'"))
         C.MPrime();
-      else if(move.equals("LPRIME"))
+      else if(move.equals("L'"))
         C.LPrime();
       else if(move.equals("U"))
         C.U();
@@ -34,11 +34,11 @@ class Main {
         C.E();
       else if(move.equals("D"))
         C.D();
-      else if(move.equals("UPRIME"))
+      else if(move.equals("U'"))
         C.UPrime();
-      else if(move.equals("EPRIME"))
+      else if(move.equals("E'"))
         C.EPrime();
-      else if(move.equals("DPRIME"))
+      else if(move.equals("D'"))
         C.DPrime();
       else if(move.equals("B"))
         C.B();        
@@ -46,20 +46,24 @@ class Main {
         C.F();
       else if(move.equals("S"))
         C.S();
-      else if(move.equals("BPRIME"))
+      else if(move.equals("B'"))
         C.BPrime();
-      else if(move.equals("FPRIME"))
+      else if(move.equals("F'"))
         C.FPrime();
-      else if(move.equals("SPRIME"))
+      else if(move.equals("S'"))
         C.SPrime();
-      else if(move.equals("CHANGEVIEWLEFT"))
+      else if(move.equals("CUBE TURN LEFT"))
         C.CubeTurnRight();
-      else if(move.equals("CHANGEVIEWRIGHT"))
+      else if(move.equals("CUBE TURN RIGHT"))
         C.CubeTurnRight();
-      else if(move.equals("CHANGEVIEWDOWN"))
+      else if(move.equals("CUBE TURN DOWN"))
         C.CubeTurnDown();
-      else if(move.equals("CHANGEVIEWUP"))
+      else if(move.equals("CUBE TURN UP"))
         C.CubeTurnUp();
+      else if(move.equals("ROTATE RIGHT"))
+        C.CubeRotateRight();
+      else if(move.equals("ROTATE LEFT"))
+        C.CubeRotateLeft();
       else if(move.equals("RANDOMIZE"))
         C.randomize();
       else if(move.equals("SOLVE"))
