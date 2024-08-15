@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 public class Cube{
   
   private int [][] cube;
+  private final WhiteCross whiteCross;
 
   public static final String TEXT_RED = "\u001B[31m";
   public static final String TEXT_GREEN = "\u001B[32m";
@@ -17,14 +20,16 @@ public class Cube{
                          {2,2,2},{2,2,2},{2,2,2},
                          {4,4,4},{4,4,4},{4,4,4}};
     cube = tempcube;
+    whiteCross = new WhiteCross(cube);
   }
 
   public int [][] getCubeArray() {
     return cube;
   }
 
-  public void solve() {
-    cube = WhiteCross.solveWhiteCross(cube);
+  public ArrayList<String> solve() {
+    cube = whiteCross.solveWhiteCross(cube);
+    return SolveHelper.getMoveLog();
   }
 
   public void randomize() { 

@@ -1,9 +1,14 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
     final String TEXT_PURPLE = "\u001B[35m";
     final String TEXT_RESET = "\u001B[0m";
+
     Cube C = new Cube();
+    ArrayList<String> moveLog = new ArrayList<String>();
+    
+
     Scanner in = new Scanner(System.in);
     System.out.println(C);
     Boolean Win = false, x = true;
@@ -58,10 +63,9 @@ class Main {
       else if(move.equals("RANDOMIZE"))
         C.randomize();
       else if(move.equals("SOLVE"))
-        C.solve();
-      else if(move.equals("PRINT")) {
-        System.out.println(Solve.getMoveLog());
-      }
+        moveLog = C.solve();
+      else if(move.equals("PRINT"))
+        System.out.println(moveLog);
       else if(move.equals("END")) {
         System.out.println("Ending the Program!");
         in.close();

@@ -1,8 +1,17 @@
-public class WhiteCross extends Solve{
+public class WhiteCross{
     
-    public static int[][] solveWhiteCross(int[][] arr) {
-        OrientFaces(arr);
-        return arr;
+    private int[][] cube;
+    private final SolveHelper helper;
+
+    public WhiteCross(int[][] cube) {
+        this.cube = cube;
+        helper = new SolveHelper();
+    }
+
+    public int[][] solveWhiteCross(int[][] cube) {
+        this.cube = cube;
+        OrientFaces();
+        return cube;
     }
 
 /*
@@ -27,34 +36,25 @@ public class WhiteCross extends Solve{
  */
 
     //Orients the cube such that the white face is on the top
-    public static int[][] OrientFaces(int[][] cube) {
+    public void OrientFaces() {
         
         if(cube[1][1] == 1) {
-            cube = CubeTurnDown(cube);
-            return cube;
+            cube = helper.CubeTurnDown(cube);
         }
         else if(cube[4][1] == 1) {
-            cube = CubeTurnRight(cube);
-            return cube;
+            cube = helper.CubeTurnRight(cube);
         }
         else if(cube[7][1] == 1) {
-            return cube;
         }
         else if(cube[10][1] == 1) {
-            cube = CubeTurnLeft(cube);
-            return cube;
+            cube = helper.CubeTurnLeft(cube);
         }
         else if(cube[13][1] == 1) {
-            cube = CubeTurnUp(cube);
-            return cube;
+            cube = helper.CubeTurnUp(cube);
         }
         else if(cube[16][1] == 1) {
-            cube = CubeTurnUp(cube);
-            cube = CubeTurnUp(cube);
-            return cube;
-        }
-        else {
-            return cube;
+            cube = helper.CubeTurnUp(cube);
+            cube = helper.CubeTurnUp(cube);
         }
     }
 }
