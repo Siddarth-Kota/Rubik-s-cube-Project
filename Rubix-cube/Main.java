@@ -68,6 +68,9 @@ class Main {
         C.randomize();
       else if(move.equals("SOLVE"))
         moveLog = C.solve();
+      else if(move.equals("TEST")) {
+        C.tester();
+      }
       else if(move.equals("PRINT"))
         System.out.println(moveLog);
       else if(move.equals("END")) {

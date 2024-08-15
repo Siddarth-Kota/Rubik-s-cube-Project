@@ -32,12 +32,29 @@ public class SolveHelper {
         return -1;
     }
 
+    /**
+     * 
+     * @param cube
+     * @param face the face (number) being analyzed
+     * @param loc direction from face of target edge tile
+     * @return color of targetted edge tile (number)
+     */
     public int getEdgeColor(int[][] cube, int face, String loc) {
         switch(loc) {
             case "top": return cube [face - 1] [1];
             case "left": return cube [face] [0];
             case "bottom": return cube [face + 1] [1];
             case "right": return cube [face] [2];
+        }
+        return -1;
+    }
+
+    public int getCornerColor(int [][] cube, int face, String loc) {
+        switch(loc) {
+            case "topleft": return cube [face - 1][0];
+            case "topright": return cube [face - 1][2];
+            case "bottomleft": return cube [face + 1][0];
+            case "bottomright": return cube [face + 1][2];
         }
         return -1;
     }

@@ -16,18 +16,18 @@ public class WhiteCross{
         return cube;
     }
 
- public void createWhiteCross() {
-    while(!isWhiteCross()) {
-        if(cube[7][1] == cube[6][1] && cube[2][1] == 1) {
-            cube = helper.CubeTurnLeft(cube);
-        }
-        else {
-            while(cube[7][1] != cube[8][1]) {
-                cube = helper.D(cube);
+    public void createWhiteCross() {
+        while(!isWhiteCross()) {
+            if(cube[7][1] == cube[6][1] && cube[2][1] == 1) {
+                cube = helper.CubeTurnLeft(cube);
             }
-            cube = helper.F(cube);
-            cube = helper.F(cube);
-            cube = helper.CubeTurnLeft(cube);
+            else {
+                while(cube[7][1] != cube[8][1]) {
+                    cube = helper.D(cube);
+                }
+                cube = helper.F(cube);
+                cube = helper.F(cube);
+                cube = helper.CubeTurnLeft(cube);
         }
     }
 }

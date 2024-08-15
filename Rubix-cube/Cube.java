@@ -4,6 +4,7 @@ public class Cube{
   
   private int [][] cube;
   private final WhiteCross whiteCross;
+  private final WhiteCorners whiteCorners;
 
   public static final String TEXT_RED = "\u001B[31m";
   public static final String TEXT_GREEN = "\u001B[32m";
@@ -21,6 +22,7 @@ public class Cube{
                          {4,4,4},{4,4,4},{4,4,4}};
     cube = tempcube;
     whiteCross = new WhiteCross(cube);
+    whiteCorners = new WhiteCorners(cube);
   }
 
   public int [][] getCubeArray() {
@@ -30,6 +32,10 @@ public class Cube{
   public ArrayList<String> solve() {
     cube = whiteCross.solveWhiteCross(cube);
     return SolveHelper.getMoveLog();
+  }
+
+  public void tester() {
+    cube = whiteCorners.solveWhiteCorners(cube);
   }
 
   public void randomize() { 
