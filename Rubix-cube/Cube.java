@@ -74,7 +74,7 @@ public class Cube{
 
   public void randomize() { 
     masterMoveList = new ArrayList<String>();
-    for(int i = 0; i < 250; i++) {
+    for(int i = 0; i < 30; i++) {
       int x = (int)(Math.random() * 17) + 1;
       if(x == 1)
         cube = Move.up(cube, 1);
