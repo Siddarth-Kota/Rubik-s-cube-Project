@@ -3,7 +3,10 @@ import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
     final String TEXT_PURPLE = "\u001B[35m";
+    final String TEXT_BLUE = "\u001B[34m";
+    final String TEXT_GREEN = "\u001B[32m";
     final String TEXT_RESET = "\u001B[0m";
+    
 
     Cube C = new Cube();
     ArrayList<String> moveLog = new ArrayList<String>();
@@ -53,7 +56,7 @@ class Main {
       else if(move.equals("S'"))
         C.SPrime();
       else if(move.equals("CUBE TURN LEFT"))
-        C.CubeTurnRight();
+        C.CubeTurnLeft();
       else if(move.equals("CUBE TURN RIGHT"))
         C.CubeTurnRight();
       else if(move.equals("CUBE TURN DOWN"))
@@ -64,12 +67,16 @@ class Main {
         C.CubeRotateRight();
       else if(move.equals("ROTATE LEFT"))
         C.CubeRotateLeft();
-      else if(move.equals("RANDOMIZE"))
+      else if(move.equals("RAND"))
         C.randomize();
-      else if(move.equals("SOLVE"))
-        moveLog = C.solve();
+      else if(move.equals("SOLVE")) {
+        System.out.println(TEXT_BLUE + C.solveWhiteCross() + TEXT_RESET);
+        System.out.println(C);
+        System.out.println(TEXT_BLUE + C.solveWhiteCorners() + TEXT_RESET);
+        System.out.println(C);
+        System.out.println("\n" + TEXT_GREEN + C.getMasterMoveList() + TEXT_RESET + "\n");
+      }
       else if(move.equals("TEST")) {
-        C.tester();
       }
       else if(move.equals("PRINT"))
         System.out.println(moveLog);

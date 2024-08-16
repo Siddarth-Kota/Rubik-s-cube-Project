@@ -10,7 +10,6 @@ public class WhiteCorners {
     public int[][] solveWhiteCorners(int[][] cube) {
         this.cube = cube;
         positionCornerPiece();
-        System.out.println(isFirstLayer());
         return cube;
     }
 
@@ -34,9 +33,9 @@ public class WhiteCorners {
                     cube = helper.E(cube);
                 }
                 cube = helper.DPrime(cube);
-                cube = helper.RPrime(cube);
+                cube = helper.FPrime(cube);
                 cube = helper.D(cube);
-                cube = helper.R(cube);
+                cube = helper.F(cube);
             }
             //top right, right side
             if(cube[9][0] == 1) {
@@ -46,9 +45,9 @@ public class WhiteCorners {
             }
             //top left, left side
             if(cube[3][2] == 1) {
-                cube = helper.LPrime(cube);
-                cube = helper.D(cube);
                 cube = helper.L(cube);
+                cube = helper.D(cube);
+                cube = helper.LPrime(cube);
             }
             //bottom, bottom side
             if(cube[12][2] == 1) {

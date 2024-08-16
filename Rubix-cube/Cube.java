@@ -2,9 +2,12 @@ import java.util.ArrayList;
 
 public class Cube{
   
-  private int [][] cube;
+  private static int [][] cube;
   private final WhiteCross whiteCross;
   private final WhiteCorners whiteCorners;
+  private static ArrayList<String> masterMoveList;
+  private static ArrayList<String> tempMoveList;
+
 
   public static final String TEXT_RED = "\u001B[31m";
   public static final String TEXT_GREEN = "\u001B[32m";
@@ -21,6 +24,9 @@ public class Cube{
                          {2,2,2},{2,2,2},{2,2,2},
                          {4,4,4},{4,4,4},{4,4,4}};
     cube = tempcube;
+
+    masterMoveList = new ArrayList<String>();
+
     whiteCross = new WhiteCross(cube);
     whiteCorners = new WhiteCorners(cube);
   }
@@ -29,13 +35,26 @@ public class Cube{
     return cube;
   }
 
-  public ArrayList<String> solve() {
-    cube = whiteCross.solveWhiteCross(cube);
-    return SolveHelper.getMoveLog();
+  public void setCubeArray(int[][] arr) {
+    cube = arr;
   }
 
-  public void tester() {
+  public ArrayList<String> solveWhiteCross() {
+    cube = whiteCross.solveWhiteCross(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
+  }
+
+  public ArrayList<String> solveWhiteCorners() {
     cube = whiteCorners.solveWhiteCorners(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
+  }
+
+  public ArrayList<String> getMasterMoveList() {
+    return masterMoveList;
   }
 
   public void randomize() { 
@@ -183,23 +202,23 @@ public class Cube{
       }
 
   public void R() {Move.up(cube,3);}
-  public void M() {Move.up(cube,2);}
-  public void L() {Move.up(cube,1);}
-  public void RPrime() {Move.down(cube,3);}
-  public void MPrime() {Move.down(cube,2);}
-  public void LPrime() {Move.down(cube,1);}
+  public void M() {Move.down(cube,2);}
+  public void L() {Move.down(cube,1);}
   public void U() {Move.left(cube,1);}
-  public void EPrime() {Move.left(cube,2);}
-  public void DPrime() {Move.left(cube,3);}
-  public void UPrime() {Move.right(cube,1);}
   public void E() {Move.right(cube,2);}
   public void D() {Move.right(cube,3);}
-  public void FPrime() {Move.FaceTurnLeft(cube,1);}
-  public void SPrime() {Move.FaceTurnLeft(cube,2);}
   public void B() {Move.FaceTurnLeft(cube,3);}
-  public void F() {Move.FaceTurnRight(cube,1);}
   public void S() {Move.FaceTurnRight(cube,2);}
+  public void F() {Move.FaceTurnRight(cube,1);}
+  public void RPrime() {Move.down(cube,3);}
+  public void MPrime() {Move.up(cube,2);}
+  public void LPrime() {Move.up(cube,1);}
+  public void UPrime() {Move.right(cube,1);}
+  public void EPrime() {Move.left(cube,2);}
+  public void DPrime() {Move.left(cube,3);}
   public void BPrime() {Move.FaceTurnRight(cube,3);}
+  public void SPrime() {Move.FaceTurnLeft(cube,2);}
+  public void FPrime() {Move.FaceTurnLeft(cube,1);}
   public void CubeTurnLeft() {Move.changeViewLeft(cube);}
   public void CubeTurnRight() {Move.changeViewRight(cube);}
   public void CubeTurnUp() {Move.changeViewUp(cube);}

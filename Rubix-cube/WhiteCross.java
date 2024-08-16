@@ -22,13 +22,13 @@ public class WhiteCross{
                 cube = helper.CubeTurnLeft(cube);
             }
             else {
-                while(cube[7][1] != cube[8][1]) {
+                while(cube[7][1] != cube[8][1] || cube[12][1] != 1) {
                     cube = helper.D(cube);
                 }
                 cube = helper.F(cube);
                 cube = helper.F(cube);
                 cube = helper.CubeTurnLeft(cube);
-        }
+            }
     }
 }
 

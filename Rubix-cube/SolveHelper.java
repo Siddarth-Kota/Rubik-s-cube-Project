@@ -9,7 +9,9 @@ public class SolveHelper {
     }
 
     public static ArrayList<String> getMoveLog() {
-        return moveLog;
+        ArrayList<String> sender = moveLog;
+        moveLog = new ArrayList<String>();
+        return sender;
     }
 
     /**
@@ -61,98 +63,122 @@ public class SolveHelper {
 
     public int[][] R(int[][] cube) {
         moveLog.add("R");
+        System.out.println(moveLog);
         return Move.up(cube,3);
     }
     public int[][] M(int[][] cube) {
         moveLog.add("M");
-        return Move.up(cube,2);
+        System.out.println(moveLog);
+        return Move.down(cube,2);
     }
     public int[][] L(int[][] cube) {
         moveLog.add("L");
-        return Move.up(cube,1);
+        System.out.println(moveLog);
+        return Move.down(cube,1);
     }
     public int[][] RPrime(int[][] cube) {
         moveLog.add("R'");
+        System.out.println(moveLog);
         return Move.down(cube,3);
     }
     public int[][] MPrime(int[][] cube) {
         moveLog.add("M'");
-        return Move.down(cube,2);
+        System.out.println(moveLog);
+        return Move.up(cube,2);
     }
     public int[][] LPrime(int[][] cube) {
         moveLog.add("L'");
-        return Move.down(cube,1);
+        System.out.println(moveLog);
+        return Move.up(cube,1);
     }
     public int[][] U(int[][] cube) {
         moveLog.add("U");
+        System.out.println(moveLog);
         return Move.left(cube,1);
     }
     public int[][] EPrime(int[][] cube) {
         moveLog.add("E'");
+        System.out.println(moveLog);
         return Move.left(cube,2);
     }
     public int[][] DPrime(int[][] cube) {
         moveLog.add("D'");
+        System.out.println(moveLog);
         return Move.left(cube,3);
     }
     public int[][] UPrime(int[][] cube) {
         moveLog.add("U'");
+        System.out.println(moveLog);
         return Move.right(cube,1);
     }
     public int[][] E(int[][] cube) {
         moveLog.add("E");
+        System.out.println(moveLog);
         return Move.right(cube,2);
     }
     public int[][] D(int[][] cube) {
         moveLog.add("D");
+        System.out.println(moveLog);
         return Move.right(cube,3);
     }
     public int[][] FPrime(int[][] cube) {
         moveLog.add("F'");
+        System.out.println(moveLog);
         return Move.FaceTurnLeft(cube,1);
     }
     public int[][] SPrime(int[][] cube) {
         moveLog.add("S'");
+        System.out.println(moveLog);
         return Move.FaceTurnLeft(cube,2);
     }
     public int[][] B(int[][] cube) {
         moveLog.add("B");
+        System.out.println(moveLog);
         return Move.FaceTurnLeft(cube,3);
     }
     public int[][] F(int[][] cube) {
         moveLog.add("F");
+        System.out.println(moveLog);
         return Move.FaceTurnRight(cube,1);
     }
     public int[][] S(int[][] cube) {
         moveLog.add("S");
+        System.out.println(moveLog);
         return Move.FaceTurnRight(cube,2);
     }
     public int[][] BPrime(int[][] cube) {
         moveLog.add("B'");
+        System.out.println(moveLog);
         return Move.FaceTurnRight(cube,3);
     }
     public int[][] CubeTurnLeft(int[][] cube) {
         moveLog.add("CubeTurnLeft");
+        System.out.println(moveLog);
         return Move.changeViewLeft(cube);
     }
     public int[][] CubeTurnRight(int[][] cube) {
         moveLog.add("CubeTurnRight");
+        System.out.println(moveLog);
         return Move.changeViewRight(cube);
     }
     public int[][] CubeTurnUp(int[][] cube) {
         moveLog.add("CubeTurnUp");
+        System.out.println(moveLog);
         return Move.changeViewUp(cube);
     }
     public int[][] CubeTurnDown(int[][] cube) {
         moveLog.add("CubeTurnDown");
+        System.out.println(moveLog);
         return Move.changeViewDown(cube);
     }
     public int[][] CubeRotateRight(int[][] cube) {
         moveLog.add("CubeRotateRight");
+        System.out.println(moveLog);
         return Move.CubeRotateRight(cube);
     }
     public int[][] CubeRotateLeft(int[][] cube) {
         moveLog.add("CubeRotateLeft");
+        System.out.println(moveLog);
         return Move.CubeRotateLeft(cube);
     }
     /**
