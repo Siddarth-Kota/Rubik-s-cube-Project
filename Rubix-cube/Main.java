@@ -76,6 +76,8 @@ class Main {
         System.out.println(C);
         System.out.println(TEXT_BLUE + C.solveSecondLayer() + TEXT_RESET);
         System.out.println(C);
+        System.out.println(TEXT_BLUE + C.solveYellowCross() + TEXT_RESET);
+        System.out.println(C);
         System.out.println("\n" + TEXT_GREEN + C.getMasterMoveList() + TEXT_RESET + "\n");
       }
       else if(move.equals("TEST")) {

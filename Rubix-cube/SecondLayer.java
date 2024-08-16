@@ -11,7 +11,6 @@ public class SecondLayer {
     public int[][] solveSecondLayer(int[][] cube) {
         this.cube = cube;
         positionSecEdges();
-        System.out.println(isSecondLayer());
         return cube;
     }
 

@@ -5,6 +5,7 @@ public class Cube{
   private final WhiteCross whiteCross;
   private final WhiteCorners whiteCorners;
   private final SecondLayer secondLayer;
+  private final YellowCross yellowCross;
 
   private static ArrayList<String> masterMoveList;
   private static ArrayList<String> tempMoveList;
@@ -31,6 +32,7 @@ public class Cube{
     whiteCross = new WhiteCross(cube);
     whiteCorners = new WhiteCorners(cube);
     secondLayer = new SecondLayer(cube);
+    yellowCross = new YellowCross(cube);
   }
 
   public int [][] getCubeArray() {
@@ -47,16 +49,20 @@ public class Cube{
     masterMoveList.addAll(tempMoveList);
     return tempMoveList;
   }
-
   public ArrayList<String> solveWhiteCorners() {
     cube = whiteCorners.solveWhiteCorners(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
     return tempMoveList;
   }
-  
   public ArrayList<String> solveSecondLayer() {
     cube = secondLayer.solveSecondLayer(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
+  }
+  public ArrayList<String> solveYellowCross() {
+    cube = yellowCross.solveYellowCross(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
     return tempMoveList;
