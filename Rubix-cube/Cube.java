@@ -6,12 +6,16 @@ public class Cube{
   private final WhiteCorners whiteCorners;
   private final SecondLayer secondLayer;
   private final YellowCross yellowCross;
+  private final YellowSide yellowSide;
+  private final LastLayerCorners lastLayerCorners;
+  private final LastLayerEdges lastLayerEdges;
 
   private static ArrayList<String> masterMoveList;
   private static ArrayList<String> tempMoveList;
+  
+  private static final boolean printPrimes = true;
 
-
-  public static final String TEXT_RED = "\u001B[31m";
+  public static final String TEXT_RED = "\u001B[31;1m";
   public static final String TEXT_GREEN = "\u001B[32m";
   public static final String TEXT_YELLOW = "\u001B[93m";
   public static final String TEXT_ORANGE = "\u001B[38;5;208m";
@@ -28,11 +32,15 @@ public class Cube{
     cube = tempcube;
 
     masterMoveList = new ArrayList<String>();
+    tempMoveList = new ArrayList<String>();
 
     whiteCross = new WhiteCross(cube);
     whiteCorners = new WhiteCorners(cube);
     secondLayer = new SecondLayer(cube);
     yellowCross = new YellowCross(cube);
+    yellowSide = new YellowSide(cube);
+    lastLayerCorners = new LastLayerCorners(cube);
+    lastLayerEdges = new LastLayerEdges(cube);
   }
 
   public int [][] getCubeArray() {
@@ -67,13 +75,66 @@ public class Cube{
     masterMoveList.addAll(tempMoveList);
     return tempMoveList;
   }
-
-  public ArrayList<String> getMasterMoveList() {
-    return masterMoveList;
+  public ArrayList<String> solveYellowSide() {
+    cube = yellowSide.solveYellowSide(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
+  }
+  public ArrayList<String> solveLastLayerCorners() {
+    cube = lastLayerCorners.solveLastLayerCorners(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
+  }
+  public ArrayList<String> solveLastLayerEdges() {
+    cube = lastLayerEdges.solveLastLayerEdges(cube);
+    tempMoveList = SolveHelper.getMoveLog();
+    masterMoveList.addAll(tempMoveList);
+    return tempMoveList;
   }
 
-  public void randomize() { 
+  public ArrayList<String> getMasterMoveList() {
+    return formatMoveList(masterMoveList);
+  }
+
+  public ArrayList<String> formatMoveList(ArrayList<String> moveList) {
+    ArrayList<String> formattedMoveList = new ArrayList<String>();
+    if(printPrimes) {
+      for (String move : moveList) {
+        if(move.contains("'")) {
+          move = move.substring(0, move.length() - 1);
+          move += " Prime";
+        }
+        formattedMoveList.add(move);
+      }
+    }
+    else {
+      formattedMoveList = moveList;
+    }
+    return formattedMoveList;
+  }
+
+  public String formatPrint(ArrayList<String> list) {
+    String result = "";
+    for (String move: list) {
+      if(move.contains("Prime") || move.contains("'")) {
+        result += TEXT_GREEN + move + TEXT_RESET + ", ";
+      }
+      else {
+        result += TEXT_YELLOW + move + TEXT_RESET + ", ";
+      }
+    }
+    return result.substring(0, result.length() - 2);
+  }
+
+
+  public void resetMoveLists() {
     masterMoveList = new ArrayList<String>();
+    tempMoveList = new ArrayList<String>();
+  }
+
+  public void randomize() {
     for(int i = 0; i < 30; i++) {
       int x = (int)(Math.random() * 17) + 1;
       if(x == 1)
@@ -116,7 +177,7 @@ public class Cube{
     }
   }
 
-  public boolean isWin() { //First 3
+  public static boolean isWin() { //First 3
     for(int i = 0; i < 3; i++) {
       for(int j = 1; j < cube[0].length; j++) {
         if(cube[i][j] != cube[i][j-1])
@@ -214,7 +275,7 @@ public class Cube{
            "      " + GetColor(14,0) + GetColor(14,1) + GetColor(14,2) + "\n" +
            "      " + GetColor(15,0) + GetColor(15,1) + GetColor(15,2) + "\n" +
            "      " + GetColor(16,0) + GetColor(16,1) + GetColor(16,2) + "\n" +
-           "      " + GetColor(17,0) + GetColor(17,1) + GetColor(17,2) + "\n" + "\n";
+           "      " + GetColor(17,0) + GetColor(17,1) + GetColor(17,2) + "\n\n";
       }
 
   public void R() {Move.up(cube,3);}
@@ -235,10 +296,10 @@ public class Cube{
   public void BPrime() {Move.FaceTurnRight(cube,3);}
   public void SPrime() {Move.FaceTurnLeft(cube,2);}
   public void FPrime() {Move.FaceTurnLeft(cube,1);}
-  public void CubeTurnLeft() {Move.changeViewLeft(cube);}
-  public void CubeTurnRight() {Move.changeViewRight(cube);}
-  public void CubeTurnUp() {Move.changeViewUp(cube);}
-  public void CubeTurnDown() {Move.changeViewDown(cube);}
-  public void CubeRotateRight() {Move.CubeRotateRight(cube);}
-  public void CubeRotateLeft() {Move.CubeRotateLeft(cube);}
+  public void Y() {Move.changeViewLeft(cube);}
+  public void YPrime() {Move.changeViewRight(cube);}
+  public void X() {Move.changeViewUp(cube);}
+  public void XPrime() {Move.changeViewDown(cube);}
+  public void Z() {Move.CubeRotateRight(cube);}
+  public void ZPrime() {Move.CubeRotateLeft(cube);}
 }

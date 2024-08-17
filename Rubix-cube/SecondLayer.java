@@ -15,27 +15,24 @@ public class SecondLayer {
     }
 
     public void positionSecEdges() {
-        cube = helper.CubeRotateRight(cube);
-        cube = helper.CubeRotateRight(cube);
-        System.out.println(TroubleShooter.tempPrint(cube));
+        cube = helper.Z(cube);
+        cube = helper.Z(cube);
         while(!isSecondLayer()) {
             //are the 4 top edge pieces yellow edges
             if(noEasyMove()) {
-                if(cube[7][1] != cube[7][2] || cube[10][1] != cube[10][0]) {
+                //cube trapped right
+                if ((cube[7][1] != cube[7][2] || cube[10][1] != cube[10][0]) || 
+                    (cube[7][1] == cube[10][0] && cube[10][1] == cube[7][2])) {
                     rightInsert();
                 }
-                else if(cube[7][1] != cube[7][0] || cube[4][1] != cube[4][2]) {
-                    leftInsert();
-                }
-                else if(cube[7][1] == cube[10][0] && cube[10][1] == cube[7][2]) {
-                    rightInsert();
-                }
-                else if(cube[7][1] == cube[4][2] && cube[4][1] == cube[7][0]) {
+                //cube trapped left
+                else if((cube[7][1] != cube[7][0] || cube[4][1] != cube[4][2]) || 
+                        (cube[7][1] == cube[4][2] && cube[4][1] == cube[7][0])) {
                     leftInsert();
                 }
                 else {
-                    cube = helper.D(cube);
-                    cube = helper.E(cube);
+                    cube = helper.U(cube);
+                    cube = helper.Y(cube);
                 }
             }
             //does bottom edge color match front center
@@ -57,8 +54,8 @@ public class SecondLayer {
                 cube = helper.U(cube);
             }
             else {
-                cube = helper.D(cube);
-                cube = helper.E(cube);
+                cube = helper.U(cube);
+                cube = helper.Y(cube);
             }
         }
     }

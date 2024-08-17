@@ -1,12 +1,11 @@
 public class TroubleShooter {
-    public static final String TEXT_RED = "\u001B[31m";
-    public static final String TEXT_GREEN = "\u001B[32m";
-    public static final String TEXT_YELLOW = "\u001B[93m";
-    public static final String TEXT_ORANGE = "\u001B[38;5;208m";
-    public static final String TEXT_BLUE = "\u001B[34m";
-    public static final String TEXT_PURPLE = "\u001B[35m";
-    public static final String TEXT_WHITE = "\u001B[37m";
-    public static final String TEXT_RESET = "\u001B[0m";
+    private static final String TEXT_RED = "\u001B[31m";
+    private static final String TEXT_GREEN = "\u001B[32m";
+    private static final String TEXT_YELLOW = "\u001B[93m";
+    private static final String TEXT_ORANGE = "\u001B[38;5;208m";
+    private static final String TEXT_BLUE = "\u001B[34m";
+    private static final String TEXT_WHITE = "\u001B[37m";
+    private static final String TEXT_RESET = "\u001B[0m";
 
     public static int[][] cube;
 

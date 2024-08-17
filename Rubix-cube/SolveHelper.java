@@ -133,28 +133,28 @@ public class SolveHelper {
         moveLog.add("B'");
         return Move.FaceTurnRight(cube,3);
     }
-    public int[][] CubeTurnLeft(int[][] cube) {
-        moveLog.add("CubeTurnLeft");
+    public int[][] Y(int[][] cube) {
+        moveLog.add("Y");
         return Move.changeViewLeft(cube);
     }
-    public int[][] CubeTurnRight(int[][] cube) {
-        moveLog.add("CubeTurnRight");
+    public int[][] YPrime(int[][] cube) {
+        moveLog.add("Y'");
         return Move.changeViewRight(cube);
     }
-    public int[][] CubeTurnUp(int[][] cube) {
-        moveLog.add("CubeTurnUp");
+    public int[][] X(int[][] cube) {
+        moveLog.add("X");
         return Move.changeViewUp(cube);
     }
-    public int[][] CubeTurnDown(int[][] cube) {
-        moveLog.add("CubeTurnDown");
+    public int[][] XPrime(int[][] cube) {
+        moveLog.add("X'");
         return Move.changeViewDown(cube);
     }
-    public int[][] CubeRotateRight(int[][] cube) {
-        moveLog.add("CubeRotateRight");
+    public int[][] Z(int[][] cube) {
+        moveLog.add("Z");
         return Move.CubeRotateRight(cube);
     }
-    public int[][] CubeRotateLeft(int[][] cube) {
-        moveLog.add("CubeRotateLeft");
+    public int[][] ZPrime(int[][] cube) {
+        moveLog.add("Z'");
         return Move.CubeRotateLeft(cube);
     }
     /**
@@ -168,123 +168,123 @@ public class SolveHelper {
         //set TOP face
         else if(newFace == 1) {
             if(currentFace == 7) {
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
             }
             else if(currentFace == 4) {
-                cube = CubeTurnRight(cube);
-                cube = CubeTurnUp(cube);
+                cube = YPrime(cube);
+                cube = X(cube);
             }
             else if(currentFace == 10) {
-                cube = CubeTurnLeft(cube);
-                cube = CubeTurnUp(cube);
+                cube = Y(cube);
+                cube = X(cube);
             }
             else if(currentFace == 13) {
-                cube = CubeTurnUp(cube);
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
+                cube = X(cube);
             }
             else if(currentFace == 16) {
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
             }
         }
         //set FRONT face
         else if(newFace == 7) {
             if(currentFace == 1) {
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 4) {
-                cube = CubeTurnRight(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 10) {
-                cube = CubeTurnLeft(cube);
+                cube = Y(cube);
             }
             else if(currentFace == 13) {
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
             }
             else if(currentFace == 16) {
-                cube = CubeTurnDown(cube);
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
+                cube = XPrime(cube);
             }
         }
         //set LEFT face
         else if(newFace == 4) {
             if(currentFace == 1) {
-                cube = CubeTurnDown(cube);
-                cube = CubeTurnLeft(cube);
+                cube = XPrime(cube);
+                cube = Y(cube);
             }
             else if(currentFace == 7) {
-                cube = CubeTurnLeft(cube);
+                cube = Y(cube);
             }
             else if(currentFace == 10) {
-                cube = CubeTurnLeft(cube);
-                cube = CubeTurnLeft(cube);
+                cube = Y(cube);
+                cube = Y(cube);
             }
             else if(currentFace == 13) {
-                cube = CubeTurnUp(cube);
-                cube = CubeTurnLeft(cube);
+                cube = X(cube);
+                cube = Y(cube);
             }
             else if(currentFace == 16) {
-                cube = CubeTurnRight(cube);
+                cube = YPrime(cube);
             }
         }
         //set RIGHT face
         else if(newFace == 10) {
             if(currentFace == 1) {
-                cube = CubeTurnDown(cube);
-                cube = CubeTurnRight(cube);
+                cube = XPrime(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 7) {
-                cube = CubeTurnRight(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 4) {
-                cube = CubeTurnRight(cube);
-                cube = CubeTurnRight(cube);
+                cube = YPrime(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 13) {
-                cube = CubeTurnUp(cube);
-                cube = CubeTurnRight(cube);
+                cube = X(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 16) {
-                cube = CubeTurnLeft(cube);
+                cube = Y(cube);
             }
         }
         //set bottom face
         else if(newFace == 13) {
             if(currentFace == 1) {
-                cube = CubeTurnDown(cube);
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 7) {
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 10) {
-                cube = CubeTurnLeft(cube);
-                cube = CubeTurnDown(cube);
+                cube = Y(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 4) {
-                cube = CubeTurnRight(cube);
-                cube = CubeTurnDown(cube);
+                cube = YPrime(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 16) {
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
             }
         }
         //set BACK face
         else if(newFace == 16) {
             if(currentFace == 1) {
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
             }
             else if(currentFace == 7) {
-                cube = CubeTurnUp(cube);
-                cube = CubeTurnUp(cube);
+                cube = X(cube);
+                cube = X(cube);
             }
             else if(currentFace == 10) {
-                cube = CubeTurnRight(cube);
+                cube = YPrime(cube);
             }
             else if(currentFace == 13) {
-                cube = CubeTurnDown(cube);
+                cube = XPrime(cube);
             }
             else if(currentFace == 4) {
-                cube = CubeTurnLeft(cube);
+                cube = Y(cube);
             }
         }
         return cube;

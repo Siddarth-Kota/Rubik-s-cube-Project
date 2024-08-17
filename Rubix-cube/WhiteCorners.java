@@ -65,7 +65,7 @@ public class WhiteCorners {
                 cube = helper.DPrime(cube);
                 cube = helper.R(cube);
             }
-            cube = helper.CubeTurnRight(cube);
+            cube = helper.YPrime(cube);
         }
     }
 

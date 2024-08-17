@@ -10,16 +10,18 @@ public class WhiteCross{
 
     public int[][] solveWhiteCross(int[][] cube) {
         this.cube = cube;
-        OrientWhiteFace();
-        positionWhiteEdges();
-        createWhiteCross();
+        if (!isWhiteCross()) {
+            OrientWhiteFace();
+            positionWhiteEdges();
+            createWhiteCross();
+        }
         return cube;
     }
 
     public void createWhiteCross() {
         while(!isWhiteCross()) {
             if(cube[7][1] == cube[6][1] && cube[2][1] == 1) {
-                cube = helper.CubeTurnLeft(cube);
+                cube = helper.Y(cube);
             }
             else {
                 while(cube[7][1] != cube[8][1] || cube[12][1] != 1) {
@@ -27,7 +29,7 @@ public class WhiteCross{
                 }
                 cube = helper.F(cube);
                 cube = helper.F(cube);
-                cube = helper.CubeTurnLeft(cube);
+                cube = helper.Y(cube);
             }
     }
 }
@@ -70,26 +72,26 @@ public class WhiteCross{
                 }
                 cube = helper.F(cube);
             }
-            cube = helper.CubeTurnRight(cube);
+            cube = helper.YPrime(cube);
         }
     }
     //Orients the cube such that the white face is on the top
     public void OrientWhiteFace() {        
         if(cube[4][1] == 1) {
-            cube = helper.CubeRotateRight(cube);
+            cube = helper.Z(cube);
         }
         else if(cube[7][1] == 1) {
-            cube = helper.CubeTurnUp(cube);
+            cube = helper.X(cube);
         }
         else if(cube[10][1] == 1) {
-            cube = helper.CubeRotateLeft(cube);
+            cube = helper.ZPrime(cube);
         }
         else if(cube[13][1] == 1) {
-            cube = helper.CubeTurnUp(cube);
-            cube = helper.CubeTurnUp(cube);
+            cube = helper.X(cube);
+            cube = helper.X(cube);
         }
         else if(cube[16][1] == 1) {
-            cube = helper.CubeTurnDown(cube);
+            cube = helper.XPrime(cube);
         }
     }
 
