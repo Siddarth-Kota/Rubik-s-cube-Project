@@ -11,12 +11,11 @@ class Main {
     Scanner in = new Scanner(System.in);
     Cube C = new Cube();
 
-    System.out.println("Enter \"E\" to enter your own cube or enter to generate a cube");
+    System.out.println("\nEnter \"E\" to enter your own cube or enter to generate a cube");
     String input = in.nextLine();
     input = input.replaceAll("\\s+","").toUpperCase();
     if(input.equals("E")) {
-      System.out.println(EnterCube.enteredCube());
-      //C.setCubeArray();
+      C.setCubeArray(EnterCube.enteredCube());
     }
     System.out.println(C);
     Boolean x = true;
@@ -62,22 +61,22 @@ class Main {
       else if(move.equals("SOLVE")) {
         moveCount--;
         C.resetMoveLists();
-        System.out.println("\n\n" + TEXT_RED + "White Cross Moves: " + TEXT_BLUE + C.formatPrint(C.solveWhiteCross()) + TEXT_RESET);
+        System.out.println("\n\n" + TEXT_RED + "White Cross Moves: " + TEXT_BLUE + C.solveWhiteCross() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "White Corners Moves: " + TEXT_BLUE + C.formatPrint(C.solveWhiteCorners()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "White Corners Moves: " + TEXT_BLUE + C.solveWhiteCorners() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "Second Layer Moves: " + TEXT_BLUE + C.formatPrint(C.solveSecondLayer()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "Second Layer Moves: " + TEXT_BLUE + C.solveSecondLayer() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "Yellow Cross Moves: " + TEXT_BLUE + C.formatPrint(C.solveYellowCross()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "Yellow Cross Moves: " + TEXT_BLUE + C.solveYellowCross() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "Yellow Side Moves: " + TEXT_BLUE + C.formatPrint(C.solveYellowSide()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "Yellow Side Moves: " + TEXT_BLUE + C.solveYellowSide() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "Final Corners Moves: " + TEXT_BLUE + C.formatPrint(C.solveLastLayerCorners()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "Final Corners Moves: " + TEXT_BLUE + C.solveLastLayerCorners() + TEXT_RESET);
         System.out.println(C);
-        System.out.println(TEXT_RED + "Final Edges Moves: " + TEXT_BLUE + C.formatPrint(C.solveLastLayerEdges()) + TEXT_RESET);
+        System.out.println(TEXT_RED + "Final Edges Moves: " + TEXT_BLUE + C.solveLastLayerEdges() + TEXT_RESET);
         System.out.println(C);
         ArrayList<String> moveList = C.getMasterMoveList();
-        System.out.println("\n" + TEXT_RED + "All Moves Used: " + TEXT_GREEN + C.formatPrint(moveList) + TEXT_RESET);
+        System.out.println("\n" + TEXT_RED + "All Moves Used: " + TEXT_GREEN + moveList + TEXT_RESET);
         System.out.println(TEXT_RED + "Total number of moves used to solve: " + TEXT_GREEN + moveList.size() + TEXT_RESET + "\n");
       }
 

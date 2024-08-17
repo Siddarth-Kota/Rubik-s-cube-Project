@@ -55,43 +55,43 @@ public class Cube{
     cube = whiteCross.solveWhiteCross(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveWhiteCorners() {
     cube = whiteCorners.solveWhiteCorners(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveSecondLayer() {
     cube = secondLayer.solveSecondLayer(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveYellowCross() {
     cube = yellowCross.solveYellowCross(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveYellowSide() {
     cube = yellowSide.solveYellowSide(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveLastLayerCorners() {
     cube = lastLayerCorners.solveLastLayerCorners(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
   public ArrayList<String> solveLastLayerEdges() {
     cube = lastLayerEdges.solveLastLayerEdges(cube);
     tempMoveList = SolveHelper.getMoveLog();
     masterMoveList.addAll(tempMoveList);
-    return tempMoveList;
+    return formatMoveList(tempMoveList);
   }
 
   public ArrayList<String> getMasterMoveList() {
@@ -114,20 +114,6 @@ public class Cube{
     }
     return formattedMoveList;
   }
-
-  public String formatPrint(ArrayList<String> list) {
-    String result = "";
-    for (String move: list) {
-      if(move.contains("Prime") || move.contains("'")) {
-        result += TEXT_GREEN + move + TEXT_RESET + ", ";
-      }
-      else {
-        result += TEXT_YELLOW + move + TEXT_RESET + ", ";
-      }
-    }
-    return result.substring(0, result.length() - 2);
-  }
-
 
   public void resetMoveLists() {
     masterMoveList = new ArrayList<String>();
