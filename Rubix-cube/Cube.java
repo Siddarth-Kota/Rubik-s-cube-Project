@@ -13,7 +13,7 @@ public class Cube{
   private static ArrayList<String> masterMoveList;
   private static ArrayList<String> tempMoveList;
   
-  private static final boolean printPrimes = true;
+  private static final boolean printPrimes = false;
 
   public static final String TEXT_RED = "\u001B[31;1m";
   public static final String TEXT_GREEN = "\u001B[32m";
